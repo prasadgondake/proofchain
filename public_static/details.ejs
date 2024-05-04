@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= pageTitle%>
+  </title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <style>
+    .btn {
+      width: 150px;
+      height: 40px;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: large;
+    }
+
+    .btn:hover {
+      background-color: black;
+      color: aliceblue;
+    }
+
+    input {
+      color: rgb(9, 29, 29);
+      font-size: small;
+      background-color: white;
+      width: 39vw;
+      height: 30px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid black;
+      margin: 50px auto;
+      background-color: #e9d6d6;
+      border-radius: 5px;
+      align-items: center;
+      padding: 50px;
+      width: 60vw;
+    }
+
+    h3 {
+      color: black;
+      margin-bottom: 10px;
+      font-weight: 200;
+      font-size: xx-large;
+    }
+
+    #desc {
+      border: 2px solid black;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1 class="logo">Proofchain</h1>
+
+    <ul class="items">
+      <li><a href="/">Home</a></li>
+      <li><a href="/submit">Submit Evidence</a></li>
+      <li class="active"><a href="/contract">Utility</a></li>
+      <li><a href="/about">About us</a></li>
+    </ul>
+  </nav>
+
+  <% if(success) { %>
+    <div class="content">
+      <h3 style="text-align: center;">Evidence Details</h3>
+      <div class="item">
+        <h2>
+          Hash Of Evidence:
+        </h2>
+        <input type="text" value="<%=result[0]%>">
+      </div>
+      <div class="item">
+        <h2>
+          Owner Of The Evidence:
+        </h2>
+        <input type="text" value="<%=result[1]%>">
+      </div>
+      <div class="item">
+        <h2>
+          Creator Of The Evidence:
+        </h2>
+        <input type="text" value="<%=result[2]%>">
+      </div>
+      <div class="item">
+        <h2>
+          Description Of Evidence:
+        </h2>
+        <textarea name="description" id="desc" cols="30" rows="10" style=" color:violet;"><%=result[3]%></textarea>
+      </div>
+      <div class="item" style=" display: flex; flex-direction: column;">
+        <h2>
+          Owners Of Evidence:
+        </h2>
+        <% for(var i=0;i<result[4].length;i++) { %>
+          <input type="text" value="<%=result[4][i]%>">
+          <% } %>
+      </div>
+      <div class="item">
+        <h2>
+          Evidence File Names:
+        </h2>
+        <input type="text" value="<%=result[6]%>">
+      </div>
+      <a href="/" class="btn">Go to home</a>
+    </div>
+    <% } else { %>
+      <div class="error">
+        <h2>No Evidence With the Given Hash Does not Exist.</h2>
+        <a href="/contract" class="btn">Try Again</a>
+      </div>
+      <% } %>
+</body>
+
+</html>

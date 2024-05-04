@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pageTitle %></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        .name{
+            color: rgb(9, 29, 29);
+        font-size: small;
+        background-color: white;
+        width: 39vw;
+        height: 30px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        }
+        .formManager{
+            display: flex;
+            justify-content: center;
+            margin-top: 10vh;
+            margin-bottom: 100px;
+            
+        }
+        .myForm{
+            border: 3px solid black;
+            border-radius: 3px;
+            padding: 10px;
+            height: 65vh;
+            /* background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%); */
+            background-color: #e9d6d6;
+            border-radius: 10px;
+        }
+        .link{
+            text-decoration: none;
+            border: 1px solid red;
+            padding: 2px;
+            box-shadow: 2px;
+        }
+        .error{
+            color: crimson;
+        }
+
+        /* .btn{
+            width: 150px;
+        height: 40px;
+        color: black;
+        background-color: aquamarine;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-top: 20px;
+        text-decoration: none;
+        padding: 10px;
+        text-align: center;
+        } */
+
+        .btn{
+        width: 190px;
+        height: 40px;
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-top: 20px;
+        /* font-style: italic; */
+        font-size: x-large;
+       }
+
+
+        .btn:hover{
+            background-color: black;
+            color: aliceblue;
+        }
+        .success{
+            width: 80vw;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            background-color: antiquewhite;
+            border-radius: 5px;
+            padding: 20px 0px;
+        }
+        .form-control{
+            margin-top: 30px;
+            color: black;
+            font-weight: bolder;
+            font-size: x-large;
+        }
+        #desc{
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+            <h1 class="logo">Proofchain</h1>
+
+            <ul class="items">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/submit">Submit Evidence</a></li>
+                <li><a href="/contract">Utility</a></li>
+                <li><a href="/about">About us</a></li>
+            </ul>
+    </nav>
+    <% if (done) { %>
+        <% if(success) { %>
+            <div class="success">
+            <h2>Evidence Submitted Successfully</h2>
+            <h3>HashValue of Evidence: <%= hash %></h3>
+            <h3>Owner Address: <%= address %></h3>
+            <form action="/direct" method="post">
+            <input type="hidden" name="hash" value="<%=hash%>">
+            <input type="hidden" name="address" value="<%=address%>">
+            <button class="btn" type="submit">Other Functions</button>
+            </form>
+        </div>
+            <% } else { %>
+                <div class="success">
+                <h2 class="error">There is an error when Submitting the Evidence.</h2>
+                <a href="/submit" class="btn">Submit Again</a>
+            </div>
+            <% } %>
+    <% } else { %>
+        <div class="formManager">
+            <form action="/submit" method="post" class="myForm" enctype="multipart/form-data">
+                    <h2 style="text-align: center; font-size:xx-large;"> Submit The Evidences</h2>
+                     <div class="form-control">
+                        <label for="account">
+                                Enter your Ethereum network address:
+                            </label>
+                            <input type="text" name="address" class="name">
+                            <br>
+                        </div>
+                        <div class="form-control"style="display:flex;">
+                        <label for="Description" style="display: inline-block;">Description for Crime: </label>   
+                          
+                            <!-- <input type="text" class="description"name="crimeDescription">  
+                            <br>   -->
+                            <textarea name="crimeDescription" id="desc" cols="30" rows="10" class="description" ></textarea>
+                        </div>
+                        <div class="form-control" >
+                            <label for="image">Evidence Images: </label>
+                            <input type="file" name="image" id="image" multiple>
+                            </div>
+                
+                            <div class="form-control">
+                                <button class="btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+    <% } %>
+
+</body>
+</html>

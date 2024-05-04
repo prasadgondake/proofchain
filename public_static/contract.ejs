@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pageTitle%></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    h2{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .hashval{
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        margin: 20px;
+        font-weight: bolder;
+        font-size: x-large;
+    }
+    input{
+        color: rgb(9, 29,29);
+        font-size: small;
+        background-color: white;
+        width: 38vw;
+        height: 30px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    .description{
+        color: rgb(9, 29,29);
+        font-size: small;
+        background-color: rgb(190, 190, 190);
+        width: 39vw;
+        height: 30px;
+        margin-bottom: 20px;   
+    }
+    .event{
+        display: block;
+        width: 50vw;
+        /* height: 40vh; */
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: beige;
+    }
+    .btn{
+        width: 150px;
+        height: 40px;
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-top: 20px;
+        /* font-style: italic; */
+        font-size: larger;
+    }
+    .btn:hover{
+            background-color: black;
+            color: aliceblue;
+    }
+</style>
+<body>
+    <nav class="navbar">
+            <h1 class="logo">Proofchain</h1>
+
+            <ul class="items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/submit">Submit Evidence</a></li>
+                <li class="active"><a href="/contract">Utility</a></li>
+                <li><a href="/about">About us</a></li>
+            </ul>
+    </nav>
+    <div class="hashval">
+        <label for="CurrentHash">Current Hash:</label>
+        <input type="text" name="hash" class="hash" id="" value="<%= hash %>">
+    </div>
+    
+    <div class="myEvent">
+        <div class="event">
+            <h2>Transfer Evidence</h2>
+            <form action="/transferEvent" method="post">
+                <label for="CurrentHash">Current Hash:</label>
+                <input type="text" name="hash" class="hash" id="" value="<%= hash %>">
+                <br>
+                <label for="owner">Enter your  ID: </label>    
+                <input type="text" class="address" name="address" value="<%= address %>">     
+                <br>       
+                <label for="newOwner">New Owner ID: </label>    
+                <input type="text" class="newAddress" name="newAddress">     
+                <br>       
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="event">
+            <h2>Get Evidence</h2>
+            <form action="/getEvent" method="post">
+               <label for="CurrentHash">Current Hash:</label>
+                <input type="text" name="hash" class="hash" id="" value="<%= hash %>"> 
+                <br>   
+                <label for="newOwner">Enter your ID: </label>    
+                <input type="text" class="address" name="address" value="<%= address %>">     
+                <br> 
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="event">
+            <h2>Remove Evidence</h2>
+            <form action="/removeEvent" method="post">
+                <label for="CurrentHash">Current Hash:</label>
+                <input type="text" name="hash" class="hash" id="" value="<%= hash %>">    
+                <br>
+                <label for="newOwner">Enter your ID: </label>    
+                <input type="text" class="address" name="address" value="<%= address %>">     
+                <br> 
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

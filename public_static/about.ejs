@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        .account{
+            width: 60vw;
+            margin: auto;
+        }
+        form{
+            border: 1px solid red;
+            border-radius: 10px;
+            background-color: grey;
+            height: 400px;
+        }
+        .btn{
+        width: 150px;
+        height: 20px;
+        color: black;
+        background-color: aquamarine;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-top: 20px;
+        }
+        p
+        {
+            font-size: xx-large;
+            text-align: center;
+            /* font-style: italic; */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+            <h1 class="logo">Proofchain</h1>
+
+            <ul class="items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/submit">Submit Evidence</a></li>
+                <li><a href="/contract">Utility</a></li>
+                <li class="active"><a href="/about">About us</a></li>
+            </ul>
+    </nav>
+
+    <div class="about">
+        <p>BLOCKCHAIN BASED SOLUTIONS FOR ENSURNIG TRUST IN FOREINSIC EVIDANCE MANAGEMENT</p>
+        <p>The digital evidences consist of important information about the criminal activity such as EvidenceID ,description about the evidence on the basis of which important decision are taken at the court. Before the evidence will reach to court it passed through a number of persons such as(police, forensic doctor,lawyer)etc so there is a main issue that it can be tempered or modified on it’s way .So there is a process known as Chain Of Custody(CoC) which ensure that evidences would not be altered during the investigation process.Coc is managed manually with entries .In this project we propose a Blockchain-based Chain Of Custody (B-Coc) in which we store the evidenceID,description about the evidence on blocks .B-Coc guarantees integrity of evidence(It means the evidence can’t get modified) ,traceability(It provide us complete information about the owners who were accessing blocks and in what order).</p>
+    </div>
+</body>
+</html>

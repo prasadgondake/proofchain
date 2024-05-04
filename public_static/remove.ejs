@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle%>
+    </title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        .account {
+            width: 60vw;
+            margin: auto;
+        }
+
+        form {
+            border: 1px solid red;
+            border-radius: 10px;
+            background-color: grey;
+            height: 400px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            /* background-color: aquamarine; */
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .error {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid black;
+            margin: 50px auto;
+            background-color: #e9d6d6;
+            color: rgb(9, 29, 29);
+            border-radius: 5px;
+            align-items: center;
+            padding: 50px;
+            width: 60vw;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <h1 class="logo">Proofchain</h1>
+
+        <ul class="items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/submit">Submit Evidence</a></li>
+            <li><a href="/contract">Utility</a></li>
+            <li class="active"><a href="/about">About us</a></li>
+        </ul>
+    </nav>
+    <% if(result.status) { %>
+        <div class="error">
+            <h2>Evidence Removed Successfully By Creator <%=result.sender%>
+            </h2>
+            <a href="/" class="btn">Go To Home</a>
+        </div>
+        <% } else { %>
+            <div class="error">
+
+                <h2>Something Error Has Occurred.</h2>
+                <a href="/contract" class="btn">Try Again</a>
+            </div>
+            <% } %>
+</body>
+
+</html>

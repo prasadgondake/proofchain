@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        .btn{
+        width: 150px;
+        height: 40px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-decoration: none;
+        font-size: large;
+        }
+        .btn:hover{
+            background-color: black;
+            color: aliceblue;
+        }
+        input{
+        color: rgb(9,29,29);
+        font-size: small;
+        background-color: white;
+        width: 39vw;
+        height: 30px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    h2{
+        margin-bottom: 10px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        margin: 50px auto;
+        background-color: #e9d6d6;
+        border-radius: 5px;
+        align-items: center;
+        padding: 50px;
+        width: 60vw;
+    }
+    h3{
+        color: black;
+        margin-bottom: 10px;
+        font-weight: 200;
+        font-size: xx-large;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+            <h1 class="logo">Proofchain</h1>
+
+            <ul class="items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/submit">Submit Evidence</a></li>
+                <li class="active"><a href="/contract">Utility</a></li>
+                <li><a href="/about">About us</a></li>
+            </ul>
+    </nav>
+
+    <% if(result.status) { %>
+        <div class="content">
+            <h2 style="text-align: center;">Evidences Transfer Details</h2>
+        <div class="item">
+            <h2>
+              Hash Of New Evidence:
+            </h2>
+              <input type="text" value="<%=result.newHash%>">  
+        </div>
+        <div class="item">
+            <h2>
+              Hash Of Old Evidence:
+            </h2>
+              <input type="text" value="<%=result.oldHash%>">  
+        </div>
+        <div class="item">
+            <h2>
+              Owner Of The Evidence:
+            </h2>
+              <input type="text" value="<%=result.sender%>">  
+        </div>
+        <div class="item">
+            <h2>
+                Receiver Of The Evidence:
+            </h2>
+              <input type="text" value="<%=result.receiver%>">  
+        </div>
+        <div class="item">
+            <h2>
+              Description Of Transference:
+            </h2>
+            <input type="text" value="<%=result.msg%>">  
+        </div>
+        <div class="item" style="display: flex; flex-direction:column;">
+            <h2>
+              Evidence File Name:
+            </h2>
+            <% for(var i=0;i<result.items.length;i++) { %>
+              <input type="text" value="<%=result.items[i]%>">
+              <% } %>  
+        </div>
+        <a href="/" class="btn">Go to home</a>
+        </div>
+        <% } else { %>
+            <div class="error">
+                <h2>Something Error Has Occurred.</h2>
+                <a href="/contract" class="btn">Try Again</a>
+            </div>
+            <% } %> 
+</body>
+</html>
